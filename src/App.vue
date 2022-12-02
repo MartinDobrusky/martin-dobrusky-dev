@@ -82,22 +82,34 @@ export default {
 };
 </script>
 
-
 <style scoped>
 body {
   font-family: "Varela Round", sans-serif;
   background-color: #090C08;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .hello-text{
-  font-size: 2rem;
-  color: rgb(253, 255, 252, 0.5);
+  font-size: 3vw;
+  color: rgb(253, 255, 252, 0.2);
 }
 
 .main-name{
   color: rgb(253, 255, 252);
-  font-size: 5rem;
+  font-size: 5vw;
+}
+
+@media only screen and (max-width: 800px) {
+  .hello-text{
+    font-size: 5vw;
+    color: rgb(253, 255, 252, 0.3);
+  }
+
+  .main-name{
+    color: rgb(253, 255, 252);
+    font-size: 8vw;
+  }
 }
 
 .social {
@@ -127,9 +139,9 @@ body {
   font-size: 40px;
   padding: 20px;
   cursor: pointer;
-  background-color: rgba(0, 127, 255, 0.5);
+  background-color: rgba(0, 127, 255, 0.6);
   border-radius: 20% !important;
-  transition: 0.3s;
+  transition: 0.5s;
   text-decoration: none;
 }
 
@@ -137,6 +149,28 @@ body {
   color: white;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 18% !important;
+}
+
+@media only screen and (max-width: 800px) {
+  .social a {
+    font-family: "FontAwesome", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    line-height: 0;
+    width: 30px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    padding: 20px;
+    cursor: pointer;
+    background-color: rgba(0, 127, 255, 0.6);
+    border-radius: 20% !important;
+    transition: 0.5s;
+    text-decoration: none;
+  }
 }
 </style>
 
@@ -150,18 +184,15 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
 .work-text {
   color: rgb(253, 255, 252, 0.5);
-  font-size: 3rem;
+  font-size: 3vw;
   font-weight: normal;
 }
 
-span.typed-text {
-  color: #007fff;
-}
-
 .blinking-cursor {
-  font-size: 3rem;
+  font-size: 3vw;
   color: #2c3e50;
   -webkit-animation: 1s blink step-end infinite;
   -moz-animation: 1s blink step-end infinite;
@@ -169,6 +200,29 @@ span.typed-text {
   -o-animation: 1s blink step-end infinite;
   animation: 1s blink step-end infinite;
 }
+
+@media only screen and (max-width: 800px) {
+  .work-text {
+    color: rgb(253, 255, 252, 0.5);
+    font-size: 5vw;
+    font-weight: normal;
+  }
+
+  .blinking-cursor {
+    font-size: 5vw;
+    color: #2c3e50;
+    -webkit-animation: 1s blink step-end infinite;
+    -moz-animation: 1s blink step-end infinite;
+    -ms-animation: 1s blink step-end infinite;
+    -o-animation: 1s blink step-end infinite;
+    animation: 1s blink step-end infinite;
+  }
+}
+
+span.typed-text {
+  color: #007fff;
+}
+
 @keyframes blink {
   from,
   to {
