@@ -1,91 +1,217 @@
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
+//import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+  <body>
+    <div class="container">
+      <h1 class="hello-text">Hi, I am</h1>
+      <h1 class="main-name">MARTIN DOBRUSKÝ</h1>
+      <h1 class="work-text">
+        and I'm a
+        <span class="typed-text">{{ typeValue }}</span>
+        <span class="blinking-cursor">|</span>
+        <span class="cursor" :class="{ typing: typeStatus }">&nbsp;</span>
+      </h1>
+      <div class="social">
+        <div class="social-block">
+          <a href="#"><i class="fa fa-github"></i></a>
+        </div>
+        <div class="social-block">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+        </div>
+        <div class="social-block">
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+        </div>
+      </div>
     </div>
-  </header>
-
-  <RouterView />
+  </body>
 </template>
 
+<script>
+export default {
+  name: "typeWiriter",
+  data: () => {
+    return {
+      typeValue: "",
+      typeStatus: false,
+      displayTextArray: ["Indie Game Developer", "Developer", "Programmer", "Freelancer"],
+      typingSpeed: 70,
+      erasingSpeed: 90,
+      newTextDelay: 2000,
+      displayTextArrayIndex: 0,
+      charIndex: 0,
+    };
+  },
+  props: {},
+  created() {
+    setTimeout(this.typeText, this.newTextDelay + 200);
+  },
+  methods: {
+    typeText() {
+      if (this.charIndex < this.displayTextArray[this.displayTextArrayIndex].length) {
+        if (!this.typeStatus) this.typeStatus = true;
+        this.typeValue += this.displayTextArray[this.displayTextArrayIndex].charAt(
+            this.charIndex
+        );
+        this.charIndex += 1;
+        setTimeout(this.typeText, this.typingSpeed);
+      } else {
+        this.typeStatus = false;
+        setTimeout(this.eraseText, this.newTextDelay);
+      }
+    },
+    eraseText() {
+      if (this.charIndex > 0) {
+        if (!this.typeStatus) this.typeStatus = true;
+        this.typeValue = this.displayTextArray[this.displayTextArrayIndex].substring(
+            0,
+            this.charIndex - 1
+        );
+        this.charIndex -= 1;
+        setTimeout(this.eraseText, this.erasingSpeed);
+      } else {
+        this.typeStatus = false;
+        this.displayTextArrayIndex += 1;
+        if (this.displayTextArrayIndex >= this.displayTextArray.length)
+          this.displayTextArrayIndex = 0;
+        setTimeout(this.typeText, this.typingSpeed + 1000);
+      }
+    },
+  },
+};
+</script>
+
+
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+body {
+  font-family: "Varela Round", sans-serif;
+  background-color: #090C08;
+  -webkit-font-smoothing: antialiased;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.hello-text{
+  font-size: 2rem;
+  color: rgb(253, 255, 252, 0.5);
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+.main-name{
+  color: rgb(253, 255, 252);
+  font-size: 5rem;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.social {
+  padding-top: 2vh;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.social-block:first-child {
+  padding-left: 0;
 }
 
-nav a {
+.social-block{
   display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+  padding-left: 20px;
 }
 
-nav a:first-of-type {
-  border: 0;
+.social a {
+  font-family: "FontAwesome", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  line-height: 0;
+  width: 40px;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  color: white;
+  font-size: 40px;
+  padding: 20px;
+  cursor: pointer;
+  background-color: rgba(0, 127, 255, 0.5);
+  border-radius: 20% !important;
+  transition: 0.3s;
+  text-decoration: none;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+.social a:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 18% !important;
+}
+</style>
+
+
+<style scoped>
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.work-text {
+  color: rgb(253, 255, 252, 0.5);
+  font-size: 3rem;
+  font-weight: normal;
+}
+
+span.typed-text {
+  color: #007fff;
+}
+
+.blinking-cursor {
+  font-size: 3rem;
+  color: #2c3e50;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+@keyframes blink {
+  from,
+  to {
+    color: transparent;
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
+  50% {
+    color: #2c3e50;
   }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+}
+@-moz-keyframes blink {
+  from,
+  to {
+    color: transparent;
   }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+  50% {
+    color: #2c3e50;
+  }
+}
+@-webkit-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: #2c3e50;
+  }
+}
+@-ms-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: #2c3e50;
+  }
+}
+@-o-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: #2c3e50;
   }
 }
 </style>
