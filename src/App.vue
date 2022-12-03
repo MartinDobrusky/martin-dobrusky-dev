@@ -1,7 +1,3 @@
-<script setup>
-//import HelloWorld from "./components/HelloWorld.vue";
-</script>
-
 <template>
   <body>
     <div class="container">
@@ -15,7 +11,9 @@
       </h1>
       <div class="social">
         <div class="social-block">
-          <a href="https://github.com/MartinDobrusky"><i class="fa fa-github"></i></a>
+          <a href="https://github.com/MartinDobrusky"
+            ><i class="fa fa-github"></i
+          ></a>
         </div>
         <div class="social-block">
           <a href="#"><i class="fa fa-facebook"></i></a>
@@ -35,12 +33,17 @@
 
 <script>
 export default {
-  name: "typeWiriter",
+  name: "typeWriter",
   data: () => {
     return {
       typeValue: "",
       typeStatus: false,
-      displayTextArray: ["Indie Game Developer", "Developer", "Programmer", "Freelancer"],
+      displayTextArray: [
+        "Indie Game Developer",
+        "Developer",
+        "Programmer",
+        "Freelancer",
+      ],
       typingSpeed: 70,
       erasingSpeed: 90,
       newTextDelay: 2000,
@@ -54,11 +57,14 @@ export default {
   },
   methods: {
     typeText() {
-      if (this.charIndex < this.displayTextArray[this.displayTextArrayIndex].length) {
+      if (
+        this.charIndex <
+        this.displayTextArray[this.displayTextArrayIndex].length
+      ) {
         if (!this.typeStatus) this.typeStatus = true;
-        this.typeValue += this.displayTextArray[this.displayTextArrayIndex].charAt(
-            this.charIndex
-        );
+        this.typeValue += this.displayTextArray[
+          this.displayTextArrayIndex
+        ].charAt(this.charIndex);
         this.charIndex += 1;
         setTimeout(this.typeText, this.typingSpeed);
       } else {
@@ -69,10 +75,9 @@ export default {
     eraseText() {
       if (this.charIndex > 0) {
         if (!this.typeStatus) this.typeStatus = true;
-        this.typeValue = this.displayTextArray[this.displayTextArrayIndex].substring(
-            0,
-            this.charIndex - 1
-        );
+        this.typeValue = this.displayTextArray[
+          this.displayTextArrayIndex
+        ].substring(0, this.charIndex - 1);
         this.charIndex -= 1;
         setTimeout(this.eraseText, this.erasingSpeed);
       } else {
@@ -88,7 +93,7 @@ export default {
 </script>
 
 <style scoped>
- body {
+body {
   font-family: "Varela Round", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -96,23 +101,23 @@ export default {
   height: 100vh;
 }
 
-.hello-text{
+.hello-text {
   font-size: 3vw;
   color: rgb(253, 255, 252, 0.5);
 }
 
-.main-name{
+.main-name {
   color: rgb(253, 255, 252);
   font-size: 5vw;
 }
 
 @media only screen and (max-width: 800px) {
-  .hello-text{
+  .hello-text {
     font-size: 5vw;
     color: rgb(253, 255, 252, 0.5);
   }
 
-  .main-name{
+  .main-name {
     color: rgb(253, 255, 252);
     font-size: 8vw;
   }
@@ -126,7 +131,7 @@ export default {
   padding-left: 0;
 }
 
-.social-block{
+.social-block {
   display: inline-block;
   padding-left: 20px;
 }
@@ -199,14 +204,30 @@ export default {
     font-size: 30px;
     padding: 20px;
     cursor: pointer;
-    background-color: rgba(0, 127, 255, 0.6);
+    background-color: rgba(0, 127, 255, 0.1);
     border-radius: 20% !important;
+    transition: 0.5s;
+    text-decoration: none;
+  }
+
+  .email p {
+    -webkit-font-smoothing: antialiased;
+    line-height: 0;
+    width: 210px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    cursor: pointer;
+    background-color: rgba(0, 127, 255, 0.1);
+    border-radius: 10px !important;
     transition: 0.5s;
     text-decoration: none;
   }
 }
 </style>
-
 
 <style scoped>
 .container {
