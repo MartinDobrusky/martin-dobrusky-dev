@@ -24,7 +24,7 @@
       </div>
       <div class="email">
         <div class="email-block">
-          <p>martin@dobrusky.dev</p>
+          <p>ved.yksurbod@nitram</p>
         </div>
       </div>
     </div>
@@ -97,7 +97,7 @@ body {
   font-family: "Varela Round", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(320deg, #090c08, #090c08, #002a54);
+  background: linear-gradient(180deg, #090c08, #090c08, #002a54);
   height: 100vh;
 }
 
@@ -167,6 +167,8 @@ body {
 }
 
 .email p {
+  unicode-bidi: bidi-override;
+  direction: rtl;
   -webkit-font-smoothing: antialiased;
   line-height: 0;
   width: 240px;
