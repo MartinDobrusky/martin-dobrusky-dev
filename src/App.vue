@@ -15,13 +15,18 @@
       </h1>
       <div class="social">
         <div class="social-block">
-          <a href="#"><i class="fa fa-github"></i></a>
+          <a href="https://github.com/MartinDobrusky"><i class="fa fa-github"></i></a>
         </div>
         <div class="social-block">
           <a href="#"><i class="fa fa-facebook"></i></a>
         </div>
         <div class="social-block">
           <a href="#"><i class="fa fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="email">
+        <div class="email-block">
+          <p>martin@dobrusky.dev</p>
         </div>
       </div>
     </div>
@@ -83,16 +88,17 @@ export default {
 </script>
 
 <style scoped>
-body {
+ body {
   font-family: "Varela Round", sans-serif;
-  background-color: #090C08;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(320deg, #090c08, #090c08, #002a54);
+  height: 100vh;
 }
 
 .hello-text{
   font-size: 3vw;
-  color: rgb(253, 255, 252, 0.2);
+  color: rgb(253, 255, 252, 0.5);
 }
 
 .main-name{
@@ -103,7 +109,7 @@ body {
 @media only screen and (max-width: 800px) {
   .hello-text{
     font-size: 5vw;
-    color: rgb(253, 255, 252, 0.3);
+    color: rgb(253, 255, 252, 0.5);
   }
 
   .main-name{
@@ -139,7 +145,7 @@ body {
   font-size: 40px;
   padding: 20px;
   cursor: pointer;
-  background-color: rgba(0, 127, 255, 0.6);
+  background-color: rgba(0, 127, 255, 0.1);
   border-radius: 20% !important;
   transition: 0.5s;
   text-decoration: none;
@@ -149,6 +155,33 @@ body {
   color: white;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 18% !important;
+}
+
+.email {
+  padding-top: 2vh;
+}
+
+.email p {
+  -webkit-font-smoothing: antialiased;
+  line-height: 0;
+  width: 240px;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  cursor: pointer;
+  background-color: rgba(0, 127, 255, 0.1);
+  border-radius: 10px !important;
+  transition: 0.5s;
+  text-decoration: none;
+}
+
+.email p:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 5px !important;
 }
 
 @media only screen and (max-width: 800px) {
